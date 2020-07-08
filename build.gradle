@@ -1,0 +1,35 @@
+buildscript {
+    ext { // build.gradle 에서 사용하는 전역변수 생성
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+
+// 반드시 입력해야 하는 부분
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.welikeheon'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+// 리포지토리, 최근에는 jcenter 많이 사용함. mavencentral 이 등록과정이 번거로운 이유로....
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
